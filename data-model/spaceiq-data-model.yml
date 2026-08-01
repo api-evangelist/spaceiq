@@ -1,0 +1,79 @@
+generated: '2026-07-21'
+method: derived
+source: https://developer.spaceiq.com/
+notes: >-
+  Entity-relationship graph derived from the SiQ GraphQL object reference. The
+  schema is a workplace/space hierarchy rooted at Company, with Employees assigned
+  to Departments and Spaces, and meeting-room calendar events attached to Spaces.
+  Field names below reflect the documented object model; exact GraphQL field
+  identifiers should be confirmed via introspection (__type).
+root:
+  entity: viewer
+  detail: The currently authenticated user; exposes the associated Company.
+entities:
+- name: Company
+  implements_node: false
+  description: Top-level tenant/organization. Root of the space hierarchy.
+  relationships:
+  - has_many: Building
+  - has_many: Department
+  - has_many: Employee
+- name: Building
+  implements_node: true
+  description: A physical building belonging to a Company.
+  relationships:
+  - belongs_to: Company
+  - has_many: Floor
+- name: Floor
+  implements_node: true
+  description: A floor within a Building.
+  relationships:
+  - belongs_to: Building
+  - has_many: Space
+- name: Space
+  implements_node: true
+  description: >-
+    An individual space (desk, room, area) on a Floor. Meeting-room spaces carry
+    calendars and availability; hoteling desks are bookable spaces.
+  relationships:
+  - belongs_to: Floor
+  - has_many: MapObject
+  - has_many: CalendarEvent
+- name: Department
+  implements_node: true
+  description: An organizational unit within a Company; employees belong to it.
+  relationships:
+  - belongs_to: Company
+  - has_many: Employee
+- name: Employee
+  implements_node: true
+  description: A person in the Company, assignable to Departments and Spaces.
+  relationships:
+  - belongs_to: Company
+  - belongs_to: Department
+  - has_one: Space
+- name: MapObject
+  implements_node: false
+  description: A drawable object on a floor map (used by the Map Image query).
+  relationships:
+  - belongs_to: Floor
+- name: AssetTag
+  implements_node: false
+  description: A tag/label applied to workplace assets.
+- name: WorkplaceGroup
+  implements_node: false
+  description: A grouping construct for workplace/neighborhood organization.
+- name: CalendarEvent
+  implements_node: false
+  description: >-
+    A meeting-room reservation on a Space's calendar. Created via
+    createCalendarEvent and removed via deleteCalendarEvent.
+  relationships:
+  - belongs_to: Space
+search_entities:
+- BuildingSearch
+- FloorSearch
+- SpaceSearch
+- DepartmentSearch
+- EmployeeSearch
+conventions_ref: conventions/spaceiq-conventions.yml

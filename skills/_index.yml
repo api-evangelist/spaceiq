@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: generated
+source: https://developer.spaceiq.com/
+api: SiQ GraphQL API (https://api.spaceiq.com/queries)
+skills:
+- file: spaceiq-book-meeting-room.md
+  name: Book a meeting room
+  api: https://api.spaceiq.com/queries
+  operations:
+  - meetingRoomAvailabilitySearch
+  - createCalendarEvent
+  - deleteCalendarEvent
+- file: spaceiq-explore-workplace.md
+  name: Explore the workplace hierarchy and find people
+  api: https://api.spaceiq.com/queries
+  operations:
+  - viewer
+  - company
+  - building
+  - floor
+  - space
+  - department
+  - employee
+  - employeeExport

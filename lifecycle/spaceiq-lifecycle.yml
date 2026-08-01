@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.spaceiq.com/
+versioning:
+  scheme: schema-version
+  current: '1.7'
+  docs: https://developer.spaceiq.com/
+  detail: >-
+    The GraphQL API advertises a schema version (1.7). No URI/header version
+    negotiation and no dated version train are documented; the introspectable
+    schema evolves in place.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  detail: >-
+    No formal deprecation policy or RFC 8594 Sunset/Deprecation header support is
+    documented. GraphQL fields can be marked @deprecated in-schema (discoverable
+    via introspection) but no published deprecation-policy page was found.
+sla:
+  url: null
+  uptime_target: null
+status_page: https://status.eptura.com/
+status_page_note: >-
+  Operated by the parent company Eptura; SpaceIQ (SiQ) is an Eptura product.
+deprecated_operations: []

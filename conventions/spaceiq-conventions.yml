@@ -1,0 +1,63 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.spaceiq.com/
+api_style: graphql
+transport:
+  protocol: https-only
+  endpoint: https://api.spaceiq.com/queries
+  http_method: POST
+  content_type: application/json
+  notes: >-
+    Single GraphQL endpoint regardless of operation. Every call is an HTTP POST
+    with a JSON body containing a "query" string. cURL and open-source GraphQL
+    tooling (e.g. GraphiQL) are the recommended clients.
+authentication:
+  style: bearer-token
+  header: Authorization
+  detail: See authentication/spaceiq-authentication.yml
+introspection:
+  supported: true
+  detail: >-
+    Schema is introspectable via __schema and __type. An introspection query can
+    also be issued as a GET request to the same endpoint.
+pagination:
+  style: relay-connections
+  pattern: Connection / Edge / Node
+  detail: >-
+    List fields follow the GraphQL Relay-style connection pattern: a Connection
+    holds a list of Edges, each Edge has a Node (the object) and cursor metadata.
+    Nodes implement a Node interface (an object with an ID).
+data_types:
+  timestamps:
+    format: iso-8601
+    example: 'YYYY-MM-DDTHH:MM:SSZ'
+  null_handling: >-
+    Blank fields are returned explicitly as null rather than being omitted.
+  serialization: JSON
+idempotency:
+  supported: false
+  detail: >-
+    No idempotency-key mechanism is documented. Mutations are limited to
+    createCalendarEvent and deleteCalendarEvent; the docs describe no
+    idempotency header or dedup contract.
+error_handling:
+  transport_errors: >-
+    HTTP-level auth failures return a JSON envelope {"error": "<message>"} with
+    an appropriate status (e.g. 401 for an invalid access token).
+  graphql_errors: >-
+    GraphQL operation errors are returned in the standard top-level "errors"
+    array alongside partial "data"; see errors/spaceiq-problem-types.yml.
+versioning:
+  scheme: schema-version
+  current: '1.7'
+  detail: >-
+    The API advertises a schema version (currently 1.7). No URI or header-based
+    version negotiation is documented; the schema evolves in place and is
+    introspectable.
+rate_limiting:
+  documented: false
+cross_references:
+  authentication: authentication/spaceiq-authentication.yml
+  errors: errors/spaceiq-problem-types.yml
+  lifecycle: lifecycle/spaceiq-lifecycle.yml
+  data_model: data-model/spaceiq-data-model.yml

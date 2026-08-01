@@ -1,0 +1,36 @@
+generated: '2026-07-21'
+method: derived
+source: https://developer.spaceiq.com/
+standards:
+- id: graphql
+  conforms: true
+  evidence: >-
+    Single POST endpoint at api.spaceiq.com/queries implementing the GraphQL spec;
+    strongly typed, introspective schema (__schema/__type), Relay-style
+    Connection/Edge/Node pagination.
+- id: iso-8601-timestamps
+  conforms: true
+  evidence: All timestamps returned as ISO 8601 (YYYY-MM-DDTHH:MM:SSZ).
+- id: relay-connections
+  conforms: true
+  evidence: List fields use Connection/Edge/Node with a Node interface.
+- id: oauth2
+  conforms: false
+  evidence: Single admin-generated access token; no OAuth flows.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use GraphQL "errors" array and a {"error":...} transport envelope.
+- id: openapi
+  conforms: false
+  evidence: GraphQL API; no OpenAPI/Swagger description published.
+compliance_program:
+  source: https://security.eptura.com/
+  operator: Eptura (parent company; SpaceIQ is an Eptura product)
+  certifications:
+  - ISO 27001
+  - GDPR
+  - CCPA
+  - HECVAT
+  - Data Privacy Framework
+  - FedRAMP (Archibus by Eptura product line)
+  detail: See security/spaceiq-trust-center.yml

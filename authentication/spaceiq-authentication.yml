@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.spaceiq.com/
+docs: https://developer.spaceiq.com/
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  oauth2_flows: []
+  notes: >-
+    SpaceIQ (SiQ) uses a single long-lived access token passed as a bearer token
+    in the HTTP Authorization header. The token is a JWT generated inside the SiQ
+    web application by a user with access level "Admin" or "IT" from the
+    Integration page (General Integrations > API > Activate). Multiple tokens can
+    be issued for different applications and individually disabled. A lost token
+    cannot be recovered; the integration instance must be disabled and re-created.
+    There is no OAuth authorization/token endpoint and no scope surface.
+schemes:
+- name: accessToken
+  type: apiKey
+  in: header
+  parameter: Authorization
+  format: >-
+    Authorization: bearer: <token>  (JWT; header value as documented)
+  description: >-
+    Admin/IT-generated access token. Required on every request to the GraphQL
+    endpoint https://api.spaceiq.com/queries. Requests without a valid token
+    return HTTP 401 with body {"error":"access_token does not correspond to user"}.
+  sources:
+  - https://developer.spaceiq.com/
+token_management:
+  generated_in: SiQ web application > Integration page > General Integrations > API
+  required_role:
+  - Admin
+  - IT
+  revocable: true
+  recoverable: false
+  multiple_tokens: true

@@ -1,7 +1,16 @@
 aid: spaceiq
 name: SpaceIQ
-description: SpaceIQ is a company surfaced as a portfolio company of bullpen-capital and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  SpaceIQ (branded SiQ, now part of Eptura) is a workplace and space-management
+  platform for optimizing physical office environments: space planning, desk and
+  meeting-room booking, hoteling, moves management, wayfinding, floorplan
+  management, occupancy analytics, building-attendance reporting, and real-estate
+  forecasting. SpaceIQ exposes a GraphQL API (schema version 1.7) at
+  api.spaceiq.com/queries for reading workplace data (companies, buildings, floors,
+  spaces, departments, employees, meeting-room calendars, map images, and
+  reports/exports) and for creating and deleting meeting-room calendar events. All
+  access is over HTTPS with an admin/IT-generated access token; the schema is fully
+  introspectable.
 url: https://raw.githubusercontent.com/api-evangelist/spaceiq/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,17 +18,125 @@ x-backed-by:
 - bullpen-capital
 x-tier: stub
 x-tier-reason: portfolio-lead
+x-parent-company: eptura
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 15
+  pass: local-v1
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Workplace Management
+- Space Management
+- Facilities Management
+- Desk Booking
+- Hoteling
+- Meeting Rooms
+- Occupancy Analytics
+- Real Estate
+- Floorplans
+- GraphQL
+- IWMS
+- Eptura
+image: https://eptura.com/spaceiq/
+apis:
+- name: SiQ GraphQL API
+  description: >-
+    SpaceIQ's (SiQ) GraphQL API. A single endpoint at https://api.spaceiq.com/queries
+    accepts POST requests with a JSON query body and an access-token bearer header.
+    Read operations cover companies, buildings, floors, spaces, departments,
+    employees, meeting-room availability/calendars, hoteling-desk search, map
+    images, and reports/exports; mutations cover creating and deleting meeting-room
+    calendar events. Schema version 1.7, introspectable via __schema / __type.
+  humanURL: https://developer.spaceiq.com/
+  baseURL: https://api.spaceiq.com
+  tags:
+  - GraphQL
+  - Workplace Management
+  - Space Management
+  properties:
+  - type: GraphQL
+    url: https://api.spaceiq.com/queries
+  - type: APIReference
+    url: https://developer.spaceiq.com/
+  - type: Authentication
+    url: authentication/spaceiq-authentication.yml
+  - type: Conventions
+    url: conventions/spaceiq-conventions.yml
+  - type: ErrorCatalog
+    url: errors/spaceiq-problem-types.yml
+  - type: DataModel
+    url: data-model/spaceiq-data-model.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: TrustCenter
+  url: security/spaceiq-trust-center.yml
 - type: Website
-  url: https://spaceiq.com
+  url: https://eptura.com/spaceiq/
+- type: DeveloperPortal
+  url: https://developer.spaceiq.com/
+- type: Documentation
+  url: https://developer.spaceiq.com/
+- type: APIReference
+  url: https://developer.spaceiq.com/
+- type: GettingStarted
+  url: https://developer.spaceiq.com/
+- type: Blog
+  url: https://eptura.com/discover-more/blog/
+- type: Pricing
+  url: https://eptura.com/pricing/
+- type: Support
+  url: https://eptura.com/contact-us/
+- type: TermsOfService
+  url: https://eptura.com/terms/
+- type: PrivacyPolicy
+  url: https://eptura.com/terms/privacy-policy/
+- type: StatusPage
+  url: https://status.eptura.com/
+- type: Compliance
+  url: https://security.eptura.com/
+- type: Security
+  url: https://security.eptura.com/
+- type: Authentication
+  url: authentication/spaceiq-authentication.yml
+- type: Conventions
+  url: conventions/spaceiq-conventions.yml
+- type: ErrorCatalog
+  url: errors/spaceiq-problem-types.yml
+- type: DataModel
+  url: data-model/spaceiq-data-model.yml
+- type: Lifecycle
+  url: lifecycle/spaceiq-lifecycle.yml
+- type: Conformance
+  url: conformance/spaceiq-conformance.yml
+- type: MCPServer
+  url: mcp/spaceiq-mcp.yml
+- type: LLMsTxt
+  url: llms/spaceiq-llms.txt
+- type: WellKnown
+  url: well-known/spaceiq-well-known.yml
+- type: DomainSecurity
+  url: security/spaceiq-domain-security.yml
+- type: VulnerabilityDisclosure
+  url: security/spaceiq-vulnerability-disclosure.yml
+- type: AgentSkill
+  url: skills/_index.yml

@@ -1,0 +1,64 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: https://developer.spaceiq.com/
+notes: >-
+  No official hosted/remote SpaceIQ MCP server was found. This is a CANDIDATE tool
+  list derived from the documented SiQ GraphQL operations, one tool per operation,
+  as a starting point for an MCP wrapper. Each tool maps to a GraphQL query or
+  mutation against https://api.spaceiq.com/queries using an admin-generated access
+  token.
+server:
+  name: spaceiq
+  transport: http
+  endpoint: https://api.spaceiq.com/queries
+  auth: bearer access token (see authentication/spaceiq-authentication.yml)
+tools:
+- name: get_viewer
+  description: Return the currently authenticated user and their company.
+  source_operation: graphql:viewer
+- name: get_company
+  description: Read company details.
+  source_operation: graphql:company
+- name: list_buildings
+  description: List buildings for the company.
+  source_operation: graphql:building
+- name: list_floors
+  description: List floors within a building.
+  source_operation: graphql:floor
+- name: list_spaces
+  description: List spaces on a floor.
+  source_operation: graphql:space
+- name: list_departments
+  description: List departments in the company.
+  source_operation: graphql:department
+- name: list_employees
+  description: List employees in the company.
+  source_operation: graphql:employee
+- name: search_spaces
+  description: Search spaces (SpaceSearch).
+  source_operation: graphql:spaceSearch
+- name: search_hoteling_desks
+  description: Search available hoteling desks.
+  source_operation: graphql:hotelingDesksSearch
+- name: export_employees
+  description: Export employee records.
+  source_operation: graphql:employeeExport
+- name: get_map_image
+  description: Retrieve a floor map image and its map objects.
+  source_operation: graphql:mapImage
+- name: search_meeting_room_availability
+  description: Search for available meeting rooms across buildings.
+  source_operation: graphql:meetingRoomAvailabilitySearch
+- name: get_reports
+  description: Retrieve available reports.
+  source_operation: graphql:reports
+- name: get_report
+  description: Retrieve a single report with its groups/fields.
+  source_operation: graphql:report
+- name: create_calendar_event
+  description: Create a meeting-room reservation.
+  source_operation: graphql:createCalendarEvent
+- name: delete_calendar_event
+  description: Delete a meeting-room reservation.
+  source_operation: graphql:deleteCalendarEvent

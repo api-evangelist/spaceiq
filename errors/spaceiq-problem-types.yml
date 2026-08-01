@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.spaceiq.com/
+format: graphql-errors
+envelope:
+  transport: '{"error": "<message>"}'
+  graphql: >-
+    Standard GraphQL response shape: top-level "errors" array (each with a
+    "message", and optionally "locations"/"path") returned alongside any partial
+    "data". The SiQ docs include a dedicated Errors section for the Map Image
+    query and error output examples throughout the object reference.
+problems:
+- transport_status: 401
+  scope: http
+  observed: true
+  message: access_token does not correspond to user
+  cause: >-
+    Missing, malformed, disabled, or otherwise invalid access token in the
+    Authorization header.
+  remediation: >-
+    Generate a valid access token in the SiQ web application (Integration page,
+    Admin/IT role) and send it as the Authorization bearer value.
+  evidence: live POST to https://api.spaceiq.com/queries returned this envelope
+- transport_status: 200
+  scope: graphql
+  observed: documented
+  message: GraphQL validation / execution errors
+  cause: >-
+    Query does not conform to the schema (unknown field, wrong argument type,
+    invalid selection) or execution fails for a valid query.
+  remediation: >-
+    Validate the query against the introspected schema (__schema / __type) before
+    sending; GraphQL returns HTTP 200 with errors carried in the "errors" array.
+notes: >-
+  SpaceIQ is a GraphQL API, so most operation errors surface at HTTP 200 inside
+  the GraphQL "errors" array rather than as REST-style 4xx/5xx status codes.
+  Transport/auth failures still use HTTP status codes with a simple {"error":...}
+  body. This is not an RFC 9457 problem+json catalog.

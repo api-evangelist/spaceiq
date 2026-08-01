@@ -1,0 +1,16 @@
+generated: '2026-07-21'
+method: searched
+probe: true
+source: https://security.eptura.com/
+url: https://security.eptura.com/
+certifications:
+- ISO 27001
+- FedRAMP
+- GDPR
+evidence:
+- source: https://security.eptura.com/
+  keywords:
+  - iso 27001
+  - fedramp
+  - trust center
+  - gdpr
