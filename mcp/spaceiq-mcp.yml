@@ -2,12 +2,10 @@ generated: '2026-07-21'
 method: derived
 status: candidate
 source: https://developer.spaceiq.com/
-notes: >-
-  No official hosted/remote SpaceIQ MCP server was found. This is a CANDIDATE tool
-  list derived from the documented SiQ GraphQL operations, one tool per operation,
-  as a starting point for an MCP wrapper. Each tool maps to a GraphQL query or
-  mutation against https://api.spaceiq.com/queries using an admin-generated access
-  token.
+notes: No official hosted/remote SpaceIQ MCP server was found. This is a CANDIDATE tool list derived from
+  the documented SiQ GraphQL operations, one tool per operation, as a starting point for an MCP wrapper.
+  Each tool maps to a GraphQL query or mutation against https://api.spaceiq.com/queries using an admin-generated
+  access token.
 server:
   name: spaceiq
   transport: http
@@ -62,3 +60,9 @@ tools:
 - name: delete_calendar_event
   description: Delete a meeting-room reservation.
   source_operation: graphql:deleteCalendarEvent
+deployment:
+  mode: none
+  verified: derived
+  tools: 16
+  checked: '2026-08-12'
+  source: catalog MCP census
