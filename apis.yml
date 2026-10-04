@@ -60,7 +60,7 @@ tags:
 - Hoteling
 - Meeting Rooms
 - Occupancy Analytics
-- Real-Estate
+- Real Estate
 - Floor Plans
 - GraphQL
 - IWMS
@@ -79,6 +79,7 @@ tags_raw:
 - GraphQL
 - IWMS
 - Eptura
+- Real-Estate
 image: https://eptura.com/spaceiq/
 apis:
 - name: SiQ GraphQL API
