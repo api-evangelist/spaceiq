@@ -50,7 +50,7 @@ accessModel:
   method: derived
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-10-06'
 tags:
 - Company
 - Workplace Management
@@ -115,6 +115,10 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- url: https://eptura.com/discover-more/news/
+  type: Blog
+- url: https://eptura.com/feed/
+  type: BlogRSS
 - type: TrustCenter
   url: security/spaceiq-trust-center.yml
 - type: Website
